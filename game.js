@@ -1,12 +1,16 @@
 let playerScore = 0;
 let computerScore = 0;
 
+// Choose randomly the computer play
+
 function computerPlay() {
     let elements = ['Rock', 'Paper', 'Scissors'];
 
     const randomElement = elements[Math.floor(Math.random() * elements.length)];
     return randomElement;
 }
+
+// Plays a single round of the game
 
 function playRound(playerSelection, computerSelection) {
 
@@ -25,6 +29,8 @@ function playRound(playerSelection, computerSelection) {
     }
 
 }
+
+//Plays 5 rounds of the game, ask for the player selection
 
 function game(){
 
