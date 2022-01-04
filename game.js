@@ -51,6 +51,14 @@ function checkWinner() {
     return false;
 }
 
+function removeTransition(e) {
+    if(e.propertyName !== 'transform') return; //skip it if it's not a transform
+    this.classList.remove('over');
+  }
+
+  function animations(){
+    this.classList.add('over');
+}
 //Plays 5 rounds of the game, ask for the player selection
 
 function game(){
@@ -69,6 +77,9 @@ function game(){
             updateScore(playerSelection, computerSelection);
         };
     }));
+    options.forEach(option => option.addEventListener('mouseover',animations));
+    options.forEach(option => option.addEventListener('transitionend', removeTransition));
+
 }
 
 game();

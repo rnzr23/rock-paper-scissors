@@ -48,7 +48,12 @@ h1{
 }
 
 .rps-btn {
+    transition: all 1s ease;
     background: none;
     border: none;
     border-radius: 100px ;
+}
+
+.over {
+    transform: scale(1.1);
 }
