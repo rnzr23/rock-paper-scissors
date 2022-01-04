@@ -1,0 +1,54 @@
+body{
+    background-color: #02013f;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+h1{
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 50px;
+    margin: 40px 0px;
+}
+
+
+.text, .score-div{
+    color: white;
+    font-family: Helvetica Neue, sans-serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.score-div {
+    border: 2px solid #c7d3f5;
+    color: #02013f;
+    background-color: #c7d3f5;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+#choose-msg{
+    font-weight: 600;
+}
+
+#computerScore, #playerScore {
+    font-size: 35px;
+    margin: 0px 10px;
+}
+
+.rps-container{
+    margin: 10px 0px;
+    width: 1000px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.rps-btn {
+    background: none;
+    border: none;
+    border-radius: 100px ;
+}

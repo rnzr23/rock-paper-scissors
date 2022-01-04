@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+let rounds = 0;
 
 // Choose randomly the computer play
 
@@ -13,40 +14,61 @@ function computerPlay() {
 // Plays a single round of the game
 
 function playRound(playerSelection, computerSelection) {
-
     if(playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
-        return "It's a draw!";
+        document.getElementById('message').textContent = "It's a draw!";
     }
     else if((playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'PAPER') || 
     (playerSelection.toUpperCase() === 'PAPER' && computerSelection.toUpperCase() === 'SCISSORS') ||
     (playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'ROCK')){
 
         computerScore++;
-        return "You Lose! "  + computerSelection + " beats " +  playerSelection[0].toUpperCase() + playerSelection.slice(1);
+        document.getElementById('message').textContent = "You Lose! "  + computerSelection + " beats " +  playerSelection[0].toUpperCase() + playerSelection.slice(1);
     } else {
         playerScore++;
-        return "You Win! " + playerSelection[0].toUpperCase() + playerSelection.slice(1) + " beats " + computerSelection ;
+        document.getElementById('message').textContent = "You Win! " + playerSelection[0].toUpperCase() + playerSelection.slice(1)+ " beats " + computerSelection ;
     }
 
+}
+
+function updateScore(playerSelection,computerSelection){
+    document.getElementById('pSelection').textContent = playerSelection[0].toUpperCase() + playerSelection.slice(1);
+    document.getElementById('cSelection').textContent = computerSelection;
+    document.getElementById('playerScore').textContent = playerScore;
+    document.getElementById('computerScore').textContent = computerScore;
+}
+
+function checkWinner() {
+    if( rounds === 5){
+        if(computerScore === playerScore){
+            document.getElementById('finalResult').textContent = "It's a draw! :P";
+        } else if (playerScore > computerScore){
+            document.getElementById('finalResult').textContent = "You win this time! ;)";
+        } else {
+            document.getElementById('finalResult').textContent = "You lose, keep trying! :(";
+        }
+        return true;
+    }
+    return false;
 }
 
 //Plays 5 rounds of the game, ask for the player selection
 
 function game(){
 
-    for(let i = 0; i < 5; i++){
-        const playerSelection = prompt("Choose your weapon!");
+    const options = document.querySelectorAll('.rps-btn');
+    options.forEach(option => option.addEventListener('click', () => {
         const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-    }
+        const playerSelection = option.id;
+        document.getElementById('finalResult').textContent = '';
 
-    if(computerScore === playerScore){
-        console.log("It's a draw!");
-    } else if (playerScore > computerScore){
-        console.log("You win this time! ;)");
-    } else {
-        console.log("You lose, keep trying! :(");
-    }
+        playRound(playerSelection, computerSelection);
+        updateScore(playerSelection,computerSelection);
+        rounds++;
+        if(checkWinner()) {
+            rounds = computerScore = playerScore = 0;
+            updateScore(playerSelection, computerSelection);
+        };
+    }));
 }
 
 game();

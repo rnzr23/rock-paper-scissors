@@ -3,8 +3,20 @@
     <head>
         <meta charset="utf-8">
         <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="game.js" defer></script>
     </head>
     <body>
-        <script src="game.js"></script>
+        <h1>Rock Paper Scissors!</h1>
+        <div class='score-div'>Player <span id='playerScore'></span> - <span id='computerScore'></span> Computer</div>
+        <div class='text'><span id='pSelection'></span> vs <span id='cSelection'></span></div>
+        <div class='text' id = 'choose-msg' >Choose your weapon: </div>
+        <div class="rps-container">
+            <button class="rps-btn" id="rock"> <img src="./img/rock-icon.png"></button>
+            <button class="rps-btn" id="paper"><img src="./img/paper-icon.png"></button>
+            <button class="rps-btn" id="scissors"><img src="./img/scissors-icon.png"></button>
+        </div>
+        <div class='text' id='message'></div>
+        <div class='text' id='finalResult'></div>
     </body>
 </html>
